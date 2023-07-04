@@ -34,6 +34,11 @@ public class ChessMatch {
         if(!board.piece(source).possibleMove(target))
             throw new ChessException("A peça escolhida não pode ser movida para o destino");
     }
+    public boolean[][] possibleMoves(ChessPosition sourcePosition){
+        Position position=sourcePosition.toPosition();
+        validateSourcePosition(position);
+        return board.piece(position).possibleMoves();
+    }
 
     private Piece makeMove(Position source, Position target) {
         Piece p=board.removePiece(source);
